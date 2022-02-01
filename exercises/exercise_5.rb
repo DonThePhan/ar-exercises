@@ -4,15 +4,16 @@ require_relative './exercise_2'
 require_relative './exercise_3'
 require_relative './exercise_4'
 
-puts "Exercise 5"
-puts "----------"
+puts 'Exercise 5'
+puts '----------'
 
 # Your code goes here ...
 @entire_company_revenue = Store.sum(:annual_revenue)
-@average_annual_revenue = @entire_company_revenue/Store.count
+@average_annual_revenue = @entire_company_revenue / Store.count
 
 puts "Entire Company Revenue: #{@entire_company_revenue}"
 puts "Average Annual Revenue for all stores: #{@average_annual_revenue}"
 
-@stores_1M_or_up = Store.where(annual_revenue: 1000000..Float::INFINITY).count
-puts "#{@stores_1M_or_up}"
+@stores_1m_or_up = Store.where("annual_revenue >= ?", 1000000).count
+# @stores_1m_or_up = Store.where(annual_revenue: 1_000_000..Float::INFINITY).count
+puts @stores_1m_or_up.to_s
